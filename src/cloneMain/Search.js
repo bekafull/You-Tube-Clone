@@ -1,0 +1,51 @@
+import React , {useState} from 'react';
+import logo from './images/logo1.png';
+import functions from './images/functions.png';
+import profileImg from './images/logo.png';
+// import yonTomon from './yonTomon'
+
+const Search = ({ onSubmit }) => {
+     const [searchTerm, setSearchTerm] = useState("");
+     const handleChange = (event) => setSearchTerm(event.target.value);
+
+     const onkeyPress = (event) => {
+          if (event.key === "Enter") {
+               onSubmit(searchTerm);
+          }
+     }
+
+     return (
+          <>
+
+            {/* <div className="">
+                <h1> <yonTomon></yonTomon> </h1>
+            </div> */}
+
+               <div className="header">
+                    <a href="/" className="brand">
+                         <img src={logo} alt="logo" className="logoBrand" />
+                    </a>
+                    <input 
+                         type="text"
+                         fullWidth
+                         placeholder="Search.."
+                         value={searchTerm}
+                         onChange={handleChange}
+                         onKeyPress={onkeyPress}
+                    />
+                    <div className="icons">
+                         <img 
+                              src={functions} 
+                              alt="functions" 
+                              className="functions"
+                         />
+                         <a href="/" className="profile">
+                              <img src={profileImg} alt="profile" />
+                         </a>
+                    </div>
+               </div>
+          </>
+     );
+};
+
+export default Search;
